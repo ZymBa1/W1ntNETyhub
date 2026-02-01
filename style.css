@@ -1,0 +1,18 @@
+:root { --blue: #1d9bf0; --border: #2f3336; --bg: #000; }
+body { background: var(--bg); color: #fff; font-family: sans-serif; margin: 0; }
+
+.overlay { position: fixed; inset: 0; background: #000; display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.glass-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+
+.main-header { position: sticky; top: 0; background: rgba(0,0,0,0.8); border-bottom: 1px solid var(--border); padding: 10px; z-index: 100; }
+.header-content { max-width: 600px; margin: 0 auto; display: flex; align-items: center; gap: 20px; }
+.mini-logo { width: 32px; height: 32px; }
+
+.container { max-width: 600px; margin: 0 auto; padding: 20px; }
+.post-card { border-bottom: 1px solid var(--border); padding: 15px 0; animation: fadeIn 0.3s ease; }
+.user-av { width: 48px; height: 48px; border-radius: 50%; }
+.verify-img { width: 18px; margin-left: 5px; }
+.post-media { width: 100%; border-radius: 15px; margin-top: 10px; border: 1px solid var(--border); }
+
+.btn-send { background: var(--blue); color: #fff; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; float: right; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
