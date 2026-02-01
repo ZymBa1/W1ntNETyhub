@@ -62,19 +62,19 @@ async function loadFeed() {
     }
 }
 
+// ... внутри функции renderPost ...
 function renderPost(post, label) {
     const feed = document.getElementById('feed-list');
-    const hasVerify = post.profiles.is_verified ? `<img src="assets/verify.png" class="verify-img">` : '';
+    // Теперь просто verify.png
+    const hasVerify = post.profiles.is_verified ? `<img src="verify.png" class="verify-img">` : '';
     const postImg = post.image_url ? `<img src="${post.image_url}" class="post-media">` : '';
 
     feed.innerHTML += `
         <div class="post-card">
-            <div class="post-label">${label}</div>
             <div class="post-header">
                 <img src="${post.profiles.avatar_url}" class="user-av">
                 <div class="user-meta">
-                    <span class="un">${post.profiles.clan_emoji || ''} ${post.profiles.username}</span>
-                    ${hasVerify}
+                    <strong>${post.profiles.username}</strong> ${hasVerify}
                 </div>
             </div>
             <div class="post-content">${post.content}</div>
