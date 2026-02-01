@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W1ntNET</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div id="auth-screen" class="overlay">
+        <div class="glass-card auth-box">
+            <img src="assets/icon.png" class="auth-logo" alt="W1ntNET">
+            <h2>Войти в W1ntNET</h2>
+            <p>Бот создаст ваш профиль автоматически</p>
+            <div id="tg-login-container">
+                <script async src="https://telegram.org/js/telegram-widget.js?22" 
+                    data-telegram-login="W1ntNetAuthBot" 
+                    data-size="large" 
+                    data-onauth="onTelegramAuth(user)" 
+                    data-request-access="write"></script>
+            </div>
+        </div>
+    </div>
+
+    <div id="app" style="display: none;">
+        <header class="main-header">
+            <div class="header-content">
+                <img src="assets/icon.png" class="mini-logo">
+                <nav class="tabs">
+                    <button id="feed-btn" class="active" onclick="switchTab('feed')">Лента</button>
+                    <button id="chats-btn" onclick="switchTab('chats')">Чаты</button>
+                </nav>
+                <div id="admin-badge" class="admin-icon" style="display:none">🛠</div>
+            </div>
+        </header>
+
+        <main class="container">
+            <section id="admin-panel" class="admin-panel" style="display:none">
+                <h3>Админ-центр</h3>
+                <div class="admin-row">
+                    <input type="text" id="target-id" placeholder="Telegram ID">
+                    <button onclick="grantVerify()">Выдать Verify</button>
+                </div>
+            </section>
+
+            <div class="composer glass-card">
+                <textarea id="post-text" placeholder="Что нового?"></textarea>
+                <div id="preview-container"></div>
+                <div class="composer-actions">
+                    <label class="attach-btn">
+                        📸 Фото <input type="file" id="post-img" hidden onchange="previewImage()">
+                    </label>
+                    <button onclick="createPost()" class="btn-send">Опубликовать</button>
+                </div>
+            </div>
+
+            <div id="feed-list"></div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
