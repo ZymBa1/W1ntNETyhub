@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>W1ntNET — Главная</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        if (!localStorage.getItem('w1nt_user')) { window.location.href = 'index.html'; }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <img src="icon.png" class="mini-logo"> <nav class="tabs">
+                <button onclick="switchTab('feed')" class="active">Лента</button>
+                <button onclick="switchTab('chats')">Чаты</button>
+            </nav>
+            <button onclick="logout()" class="btn-logout">Выход</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="composer glass-card">
+            <textarea id="post-text" placeholder="Что нового?"></textarea>
+            <div class="composer-actions">
+                <label class="attach-btn">📸 Фото <input type="file" id="post-img" hidden></label>
+                <button onclick="createPost()" class="btn-send">Пост</button>
+            </div>
+        </div>
+        <div id="feed-list"></div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        function logout() {
+            localStorage.removeItem('w1nt_user');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
